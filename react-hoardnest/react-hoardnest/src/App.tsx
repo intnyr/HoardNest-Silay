@@ -1,13 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Navbar from "./components/Navbar";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-const App: React.FC = () => {
+function App() {
   return (
     <div className="App">
-      <Navbar />
-      {/* <header className="App-header">
+      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -20,9 +18,9 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
-      </header> */}
+      </header>
     </div>
   );
-};
+}
 
 export default App;
