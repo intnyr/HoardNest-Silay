@@ -17,14 +17,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { Link } from "react-router-dom";
-import logo from "../logo.svg";
+import LogoIcon from "../logo-icon.svg";
+import TextLogo from "../text-logo.svg";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const hoarnestTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#e7dbcd",
+      main: "#fff",
     },
   },
 });
@@ -36,29 +37,29 @@ const Navbar: React.FC = () => {
     setDrawerOpen(open);
   };
 
-  const generalLinks = [
-    { text: "AGB" },
-    { text: "Datenschutz" },
-    { text: "Impressum" },
+  const generalLinks: { text: string; href?: string }[] = [
+    { text: "Products", href: "/products" },
+    { text: "About Us", href: "/about" },
+    { text: "Contact", href: "/contact" },
   ];
 
-  const categories = [
-    "Abendtaschen",
-    "Beuteltaschen",
-    "Businesstaschen",
-    "Geldbörsen & Etuis",
-    "Gürteltaschen",
-    "Handtaschen",
-    "Henkeltaschen",
-    "Koffer",
-    "Kosmetiktaschen",
-    "Reisetaschen",
-    "Rucksäcke",
-    "Schultertaschen",
-    "Shopper",
-    "Sporttaschen",
-    "Strandtaschen",
-    "Umhängetaschen",
+  const categories: string[] = [
+    "Furniture & Home Décor",
+    "Kitchen & Dining",
+    "Electronics & Gadgets",
+    "Clothing & Accessories",
+    "Books & Stationery",
+    "Toys & Games",
+    "Sporting Goods",
+    "Baby & Kids",
+    "Gardening & Outdoor",
+    "Tools & Home Improvement",
+    "Health & Personal Care",
+    "Art & Collectibles",
+    "Pet Supplies",
+    "Hobby & DIY Supplies",
+    "Seasonal Items",
+    "Miscellaneous",
   ];
 
   return (
@@ -75,34 +76,47 @@ const Navbar: React.FC = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Drawer
-            anchor="left"
-            open={drawerOpen}
-            onClose={toggleDrawer(false)}
-            role="presentation"
-          >
-            <div
-              style={{
+
+          {/* Drawer */}
+          <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+            <Box
+              sx={{
                 width: 250,
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "row", // Changed to row
                 alignItems: "center",
-                padding: "1rem",
+                justifyContent: "space-between", // Ensures spacing between elements
+                p: 2,
               }}
             >
-              <Typography variant="h4" gutterBottom align="center">
-                Menü
-              </Typography>
+              {/* Logo */}
+              <Box>
+                <Link to="/">
+                  <img
+                    src={TextLogo}
+                    alt="Hoarnest Logo"
+                    height="50"
+                    width="120"
+                  />
+                </Link>
+              </Box>
+
+              {/* Close Menu Icon */}
               <IconButton onClick={toggleDrawer(false)} aria-label="Close Menu">
                 <ChevronLeftIcon />
               </IconButton>
-            </div>
+            </Box>
 
             <Divider />
 
-            <List subheader={<ListSubheader>Allgemein</ListSubheader>}>
+            <List subheader={<ListSubheader>Menu</ListSubheader>}>
               {generalLinks.map((link, index) => (
-                <ListItem button key={index}>
+                <ListItem
+                  key={index}
+                  component="a"
+                  href={link.href}
+                  onClick={toggleDrawer(false)}
+                >
                   <ListItemText primary={link.text} />
                 </ListItem>
               ))}
@@ -110,9 +124,14 @@ const Navbar: React.FC = () => {
 
             <Divider />
 
-            <List subheader={<ListSubheader>Taschen-Kategorien</ListSubheader>}>
+            <List subheader={<ListSubheader>Categories</ListSubheader>}>
               {categories.map((category, index) => (
-                <ListItem button key={index}>
+                <ListItem
+                  key={index}
+                  component="a"
+                  href={`/categories/${category.toLowerCase()}`}
+                  onClick={toggleDrawer(false)}
+                >
                   <ListItemText primary={category} />
                 </ListItem>
               ))}
@@ -122,7 +141,7 @@ const Navbar: React.FC = () => {
           {/* Logo Link */}
           <Box sx={{ flexGrow: 1 }}>
             <Link to="/">
-              <img src={logo} alt="Hoarnest Logo" height="50" width="120" />
+              <img src={LogoIcon} alt="Hoarnest Logo" height="50" width="120" />
             </Link>
           </Box>
 
