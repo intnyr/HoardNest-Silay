@@ -40,3 +40,23 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.slick-next {
+  right: -15px !important;
+}
+
+.slick-prev {
+  left: -15px !important;
+  z-index: 100 !important;
+}
+
+.slick-prev,
+.slick-next {
+  width: 30px !important;
+  height: 55px !important;
+  background: #89946c !important;
+}
+
+.slick-initialized .slick-slide {
+  transform: translate3d(-410px, 0px, 0px); /* assuming 0 + -40px = -390px */
+}

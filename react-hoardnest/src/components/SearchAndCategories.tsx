@@ -10,69 +10,157 @@ import {
   IconButton,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const SearchAndCategories: React.FC = () => {
+const SearchAndMenu: React.FC = () => {
   const categories = [
-    { name: "Rucksäcke", link: "/rucksaecke/" },
-    { name: "Geldbörsen & Etuis", link: "/geldboersen-etuis/" },
-    { name: "Umhängetaschen", link: "/umhaengetaschen/" },
-    { name: "Handtaschen", link: "/handtaschen/" },
-    { name: "Beuteltaschen", link: "/beuteltaschen/" },
-    { name: "Shopper", link: "/shopper/" },
-    { name: "Koffer", link: "/koffer/" },
-    { name: "Luxustaschen", link: "/luxustaschen/" },
-    { name: "Marken", link: "/marken/" },
-    { name: "Sale", link: "/sale/" },
+    "Furniture & Home Décor",
+    "Kitchen & Dining",
+    "Electronics & Gadgets",
+    "Clothing & Accessories",
+    "Books & Stationery",
+    "Toys & Games",
+    "Sporting Goods",
+    "Baby & Kids",
+    "Gardening & Outdoor",
+    "Tools & Home Improvement",
+    "Health & Personal Care",
+    "Art & Collectibles",
+    "Pet Supplies",
+    "Hobby & DIY Supplies",
+    "Seasonal Items",
+    "Miscellaneous",
   ];
+
+  // Function to format category links
+  const formatCategoryLink = (category: string) => {
+    return category
+      .toLowerCase()
+      .replace(/ /g, "-") // Replace spaces with "-"
+      .replace(/&/g, "and"); // Replace "&" with "and"
+  };
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 15, // Adjust for visible items
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1536,
+        settings: {
+          slidesToShow: 11,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 9,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 7,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
+  };
 
   return (
     <Box sx={{ p: 2 }}>
       {/* Search Section */}
-      <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
-        <IconButton>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "rgba(0, 0, 0, 0.05)",
+          borderRadius: 2,
+          px: 1,
+          py: 0.5,
+          mb: 1,
+        }}
+      >
+        <IconButton sx={{ color: "inherit", p: 1 }}>
           <SearchIcon />
         </IconButton>
         <InputBase
-          placeholder="Hier Tasche suchen..."
+          placeholder="Find your favorite now..."
           type="text"
-          aria-label="Suche"
+          aria-label="Search Favorite"
           fullWidth
           sx={{
             ml: 1,
-            backgroundColor: "rgba(0, 0, 0, 0.05)",
-            borderRadius: 1,
-            px: 2,
+            backgroundColor: "transparent",
           }}
         />
       </Box>
 
       {/* Navigation Menu */}
-      <nav>
-        <List
-          subheader={
-            <ListSubheader component="div" sx={{ fontWeight: "bold" }}>
-              Kategorien
-            </ListSubheader>
-          }
-        >
-          {categories.map((category, index) => (
-            <ListItem key={index} disablePadding>
-              <Link
-                href={category.link}
-                underline="hover"
-                color="primary"
-                sx={{ textDecoration: "none", width: "100%" }}
+      <Slider {...settings}>
+        {categories.map((category, index) => (
+          <Box
+            key={index}
+            sx={{
+              margin: "0 15px",
+              p: 1,
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Link
+              href={`/categories/${formatCategoryLink(category)}`}
+              underline="hover"
+              color="#4e542e"
+              sx={{
+                minWidth: 100,
+                maxWidth: 250,
+                textDecoration: "none",
+                backgroundColor: "#e7dbcd",
+                height: 50,
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
+                borderRight: "2px solid #ccc",
+                padding: "0 16px",
+                pt: 0.75,
+              }}
+            >
+              <Typography
+                variant="body2"
+                gutterBottom
+                sx={{
+                  lineHeight: "1.25",
+                  textAlign: "center",
+                }}
               >
-                <Typography variant="body1" gutterBottom>
-                  {category.name}
-                </Typography>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
-      </nav>
+                {category}
+              </Typography>
+            </Link>
+          </Box>
+        ))}
+      </Slider>
     </Box>
   );
 };
 
-export default SearchAndCategories;
+export default SearchAndMenu;

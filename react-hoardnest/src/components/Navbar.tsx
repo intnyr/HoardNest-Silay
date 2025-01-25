@@ -62,6 +62,14 @@ const Navbar: React.FC = () => {
     "Miscellaneous",
   ];
 
+  // Function to format category links
+  const formatCategoryLink = (category: string) => {
+    return category
+      .toLowerCase()
+      .replace(/ /g, "-") // Replace spaces with "-"
+      .replace(/&/g, "and"); // Replace "&" with "and"
+  };
+
   return (
     <ThemeProvider theme={hoarnestTheme}>
       <AppBar position="sticky">
@@ -115,6 +123,9 @@ const Navbar: React.FC = () => {
                   key={index}
                   component="a"
                   href={link.href}
+                  sx={{
+                    color: "#4e542e",
+                  }}
                   onClick={toggleDrawer(false)}
                 >
                   <ListItemText primary={link.text} />
@@ -129,7 +140,10 @@ const Navbar: React.FC = () => {
                 <ListItem
                   key={index}
                   component="a"
-                  href={`/categories/${category.toLowerCase()}`}
+                  href={`/categories/${formatCategoryLink(category)}`}
+                  sx={{
+                    color: "#4e542e",
+                  }}
                   onClick={toggleDrawer(false)}
                 >
                   <ListItemText primary={category} />
