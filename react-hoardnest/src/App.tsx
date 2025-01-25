@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import SearchAndCategories from "./components/SearchAndCategories";
+import MainContainer from "./components/MainContainer";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <Navbar />
-      <SearchAndCategories />
+      <MainContainer />
     </div>
   );
 };

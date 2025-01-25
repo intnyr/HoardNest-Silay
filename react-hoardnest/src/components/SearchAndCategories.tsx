@@ -83,7 +83,7 @@ const SearchAndMenu: React.FC = () => {
   };
 
   return (
-    <Box sx={{ p: 2 }}>
+    <Box sx={{ padding: "0 1rem" }}>
       {/* Search Section */}
       <Box
         sx={{
@@ -93,7 +93,6 @@ const SearchAndMenu: React.FC = () => {
           borderRadius: 2,
           px: 1,
           py: 0.5,
-          mb: 1,
         }}
       >
         <IconButton sx={{ color: "inherit", p: 1 }}>

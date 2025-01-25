@@ -20,6 +20,8 @@ import { Link } from "react-router-dom";
 import LogoIcon from "../logo-icon.svg";
 import TextLogo from "../text-logo.svg";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import SearchAndCategories from "../components/SearchAndCategories";
+import WishlistDrawer from "./WishlistDrawer";
 
 const hoarnestTheme = createTheme({
   palette: {
@@ -70,6 +72,18 @@ const Navbar: React.FC = () => {
       .replace(/&/g, "and"); // Replace "&" with "and"
   };
 
+  const [isWishlistOpen, setWishlistOpen] = React.useState(false);
+
+  const wishlistItems = [
+    {
+      id: 1,
+      name: "Chloé Bowling Bag - Daria Shoulder Bag Small - in brown - für Damen",
+      image: "https://images.buybags.de/products/example.jpg",
+      onRemove: (id: number) => alert(`Remove item with ID: ${id}`),
+    },
+    // Add more items as needed
+  ];
+
   return (
     <ThemeProvider theme={hoarnestTheme}>
       <AppBar position="sticky">
@@ -79,7 +93,7 @@ const Navbar: React.FC = () => {
             edge="start"
             color="inherit"
             aria-label="open menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, color: "#9f4a23" }}
             onClick={toggleDrawer(true)}
           >
             <MenuIcon />
@@ -160,10 +174,23 @@ const Navbar: React.FC = () => {
           </Box>
 
           {/* Wishlist Icon */}
-          <IconButton color="inherit" aria-label="open wishlist">
+          <IconButton
+            color="inherit"
+            aria-label="open wishlist"
+            sx={{
+              color: "#9f4a23",
+            }}
+            onClick={() => setWishlistOpen(true)}
+          >
             <FavoriteIcon />
           </IconButton>
+          <WishlistDrawer
+            open={isWishlistOpen}
+            onClose={() => setWishlistOpen(false)}
+            wishlistItems={wishlistItems}
+          />
         </Toolbar>
+        <SearchAndCategories />
       </AppBar>
     </ThemeProvider>
   );
