@@ -61,10 +61,6 @@ body {
   transform: translate3d(-410px, 0px, 0px); /* assuming 0 + -40px = -390px */
 }
 
-/* .MuiIconButton-root {
-  padding: 0.65rem !important;
-} */
-
-/* .css-19midj6 {
-  padding: 0 16px !important;
-} */
+.MuiBreadcrumbs-root .MuiTypography-root {
+  font-size: small !important;
+}

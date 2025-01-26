@@ -4,10 +4,9 @@ import {
   InputBase,
   Typography,
   Link,
-  List,
-  ListItem,
-  ListSubheader,
   IconButton,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Slider from "react-slick";
@@ -82,6 +81,10 @@ const SearchAndMenu: React.FC = () => {
     ],
   };
 
+  // Use Material-UI theme and media query to detect screen width
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Box sx={{ padding: "0 1rem" }}>
       {/* Search Section */}
@@ -93,6 +96,7 @@ const SearchAndMenu: React.FC = () => {
           borderRadius: 2,
           px: 1,
           py: 0.5,
+          mb: 1,
         }}
       >
         <IconButton sx={{ color: "inherit", p: 1 }}>
@@ -110,54 +114,56 @@ const SearchAndMenu: React.FC = () => {
         />
       </Box>
 
-      {/* Navigation Menu */}
-      <Slider {...settings}>
-        {categories.map((category, index) => (
-          <Box
-            key={index}
-            sx={{
-              margin: "0 15px",
-              p: 1,
-              display: "flex",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <Link
-              href={`/categories/${formatCategoryLink(category)}`}
-              underline="hover"
-              color="#4e542e"
+      {/* Categories Navigation Menu */}
+      {!isSmallScreen && (
+        <Slider {...settings}>
+          {categories.map((category, index) => (
+            <Box
+              key={index}
               sx={{
-                minWidth: 100,
-                maxWidth: 250,
-                textDecoration: "none",
-                backgroundColor: "#e7dbcd",
-                height: 50,
-                alignItems: "center",
+                margin: "0 15px",
+                p: 1,
                 display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                textAlign: "center",
-                borderRight: "2px solid #ccc",
-                padding: "0 16px",
-                pt: 0.75,
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                width: "100%",
               }}
             >
-              <Typography
-                variant="body2"
-                gutterBottom
+              <Link
+                href={`/categories/${formatCategoryLink(category)}`}
+                underline="hover"
+                color="#4e542e"
                 sx={{
-                  lineHeight: "1.25",
+                  minWidth: 100,
+                  maxWidth: 250,
+                  textDecoration: "none",
+                  backgroundColor: "#e7dbcd",
+                  height: 50,
+                  alignItems: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
                   textAlign: "center",
+                  borderRight: "2px solid #ccc",
+                  padding: "0 16px",
+                  pt: 0.75,
                 }}
               >
-                {category}
-              </Typography>
-            </Link>
-          </Box>
-        ))}
-      </Slider>
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  sx={{
+                    lineHeight: "1.25",
+                    textAlign: "center",
+                  }}
+                >
+                  {category}
+                </Typography>
+              </Link>
+            </Box>
+          ))}
+        </Slider>
+      )}
     </Box>
   );
 };

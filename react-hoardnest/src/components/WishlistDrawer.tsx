@@ -74,6 +74,11 @@ const WishlistDrawer = ({ open, onClose, wishlistItems }: any) => {
                 primaryTypographyProps={{
                   variant: "body2",
                   gutterBottom: true,
+                  sx: {
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    textOverflow: "ellipsis",
+                  },
                 }}
               />
               <IconButton
@@ -84,6 +89,7 @@ const WishlistDrawer = ({ open, onClose, wishlistItems }: any) => {
                 <DeleteIcon />
               </IconButton>
             </ListItem>
+
             <Divider />
           </React.Fragment>
         ))}
