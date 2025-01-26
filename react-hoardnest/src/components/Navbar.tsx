@@ -22,6 +22,7 @@ import TextLogo from "../text-logo.svg";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import SearchAndCategories from "../components/SearchAndCategories";
 import WishlistDrawer from "./WishlistDrawer";
+import productImage1 from "../media/product-01.png";
 
 const hoarnestTheme = createTheme({
   palette: {
@@ -34,6 +35,7 @@ const hoarnestTheme = createTheme({
 
 const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isWishlistOpen, setWishlistOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
@@ -72,13 +74,11 @@ const Navbar: React.FC = () => {
       .replace(/&/g, "and"); // Replace "&" with "and"
   };
 
-  const [isWishlistOpen, setWishlistOpen] = React.useState(false);
-
   const wishlistItems = [
     {
       id: 1,
-      name: "Chloé Bowling Bag - Daria Shoulder Bag Small - in brown - für Damen",
-      image: "https://images.buybags.de/products/example.jpg",
+      name: "Sports-casual mens moccasins without ties with print and inscription in white and black",
+      image: productImage1,
       onRemove: (id: number) => alert(`Remove item with ID: ${id}`),
     },
     // Add more items as needed
