@@ -7,6 +7,7 @@ import {
   Link,
   Divider,
 } from "@mui/material";
+import SearchAndCategories from "../components/SearchAndCategories";
 import { useNavigate } from "react-router-dom";
 import productImage1 from "../media/product-01.png";
 import productImage2 from "../media/product-02.png";
@@ -126,6 +127,7 @@ const MainContainer = () => {
   };
   return (
     <Box sx={{ p: 2 }}>
+      <SearchAndCategories />
       {/* Breadcrumbs */}
       <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 1 }}>
         <Link underline="hover" color="inherit" href="/">

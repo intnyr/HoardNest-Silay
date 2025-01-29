@@ -190,7 +190,7 @@ const Navbar: React.FC = () => {
             wishlistItems={wishlistItems}
           />
         </Toolbar>
-        <SearchAndCategories />
+        {/* <SearchAndCategories /> */}
       </AppBar>
     </ThemeProvider>
   );
