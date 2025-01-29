@@ -1,7 +1,28 @@
 https://www.youtube.com/watch?v=ZF73dpgRrWI
 
+11:00 React Project Setup
+	- Install React Router DOM and Toastify
+		- https://youtu.be/ZF73dpgRrWI?t=793
+	- React Snippets
+		- https://youtu.be/ZF73dpgRrWI?t=884
+	- Assets.js
+		- https://youtu.be/ZF73dpgRrWI?t=997
+	- Tailwind
+		- https://youtu.be/ZF73dpgRrWI?t=1115
+	- Page Structure
+		- https://youtu.be/ZF73dpgRrWI?t=1261
+	- Context Folder
+		- https://youtu.be/ZF73dpgRrWI?t=1304
+	- main.jsx is same with my index.tsx
+		- https://youtu.be/ZF73dpgRrWI?t=1485
+    - App.jsx
+    	- https://youtu.be/ZF73dpgRrWI?t=1566
+    - Navbar
+    	- https://youtu.be/ZF73dpgRrWI?t=1956
+    - 
 
 
+//Footer
 import React from "react";
 import { Box, Container, IconButton, Link, Typography } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";

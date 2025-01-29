@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
   };
 
   const generalLinks: { text: string; href?: string }[] = [
-    { text: "Products", href: "/" },
+    { text: "New Listing", href: "/" },
     { text: "About Us", href: "/about" },
     { text: "Contact", href: "/contact" },
     { text: "Login", href: "/login" },
