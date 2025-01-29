@@ -58,7 +58,7 @@ body {
 }
 
 .slick-initialized .slick-slide {
-  transform: translate3d(-410px, 0px, 0px); /* assuming 0 + -40px = -390px */
+  transform: translate3d(-395px, 0px, 0px); /* assuming 0 + -40px = -390px */
 }
 
 .MuiBreadcrumbs-root .MuiTypography-root {

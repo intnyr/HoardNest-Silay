@@ -20,7 +20,6 @@ import { Link } from "react-router-dom";
 import LogoIcon from "../logo-icon.svg";
 import TextLogo from "../text-logo.svg";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import SearchAndCategories from "../components/SearchAndCategories";
 import WishlistDrawer from "./WishlistDrawer";
 import productImage1 from "../media/product-01.png";
 
@@ -190,7 +189,6 @@ const Navbar: React.FC = () => {
             wishlistItems={wishlistItems}
           />
         </Toolbar>
-        {/* <SearchAndCategories /> */}
       </AppBar>
     </ThemeProvider>
   );
